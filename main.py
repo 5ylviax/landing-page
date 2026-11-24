@@ -13,7 +13,7 @@ PROJECTS = [
     
     {
         "title": "Framewatch",
-        "description": "C++, Qt,",
+        "description": "C++, Qt",
         "image": "FrameWatch-desktop-application.png",
         "github_url": "https://github.com/5ylviax/framewatch",
     },
@@ -35,10 +35,10 @@ PROJECTS = [
     
     {
         "title": "AI Powered Job Matching System",
-        "description": "Python, Docker, OpenAI, RapidAI, Docker",
+        "description": "Python, Docker, OpenAI, RapidAI",
         "image": "",
         "url": None,
-        "github_url": "https://github.com/m0jik/recipe_website"
+        "github_url": None,
     },
     
     {
