@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Gallery</h1>
+    <p class="tagline">3D renders made in Blender</p>
+
+    {% if gallery %}
+        <div class="gallery">
+            {% for item in gallery %}
+                {% set src = url_for('static', filename='image/blender/' ~ item.image) %}
+                <figure class="gallery-item">
+                    <a href="{{ src }}" target="_blank" rel="noreferrer">
+                        <img src="{{ src }}" alt="{{ item.title }}" loading="lazy">
+                    </a>
+                    <figcaption>
+                        {{ item.title }}
+                        {% if item.tools %}
+                            <span class="gallery-meta">
+                                <i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i>
+                                {{ item.tools }}
+                            </span>
+                        {% endif %}
+                        {% if item.camera %}
+                            <span class="gallery-meta">
+                                <i class="fa-solid fa-camera" aria-hidden="true"></i>
+                                {{ item.camera }}
+                            </span>
+                        {% endif %}
+                    </figcaption>
+                </figure>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="muted">Renders coming soon.</p>
+    {% endif %}
+{% endblock %}

@@ -3,10 +3,13 @@
 {% block content %}
     <section class="hero">
         <h1>Hi, I'm {{ name }}</h1>
-        <p class="tagline">Computer Science, 2026 at Southern Illinois University Edwardsville</p>
+        <p class="tagline">Computer Science, Minor in Business Administration<br>
+            Southern Illinois University Edwardsville, 2026</p>
+        <p>I'm a Computer Science student and military veteran with a minor in Business Administration. Passionate about software engineering,
+        backend development, and building reliable, scalable applications that solve real-world problems.</p>
 
         <div class="buttons">
-            <a class="button secondary" href="{{ url_for('contact') }}">Conatct Me</a>
+            <a class="button secondary" href="{{ url_for('contact') }}">Contact Me</a>
         </div>
     </section>
 {% endblock %}
