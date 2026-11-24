@@ -4,17 +4,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>Silvia Saavedra</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
 </head>
 
 <body>
-  <ul>
-    <li><a href="{{ url_for('index') }}">Home</a></li>
-    <li><a href="{{url_for('about')}}">About</a></li>
-    <li><a href="{{url_for('resume')}}">Resume</a></li>
-    <li><a href="{{url_for('contact')}}">Contact</a></li>
-  </ul>
-  {% block content %}
-  {% endblock %}
+  <nav class="navbar">
+    <a class="brand" href="{{ url_for('index') }}">Silvia Saavedra</a>
+    <ul class="nav-links">
+      {% set pages = [
+        ('index',   'Home',    'fa-house'),
+        ('about',   'About',   'fa-user'),
+        ('portfolio',  'Portfolio',       'fa-folder-open'),
+        ('contact',    'Contact',         'fa-envelope'),
+      ] %}
+      {% for endpoint, label, icon in pages %}
+        <li>
+          <a href="{{ url_for(endpoint) }}"
+             {% if request.endpoint == endpoint %}class="active" aria-current="page"{% endif %}>
+            <i class="fa-solid {{ icon }}" aria-hidden="true"></i>
+            <span class="label">{{ label }}</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+  <main class="page">
+    {% block content %}
+    {% endblock %}
+  </main>
 </body>
 </html>

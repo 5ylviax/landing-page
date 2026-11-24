@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h2>Home Page</h2>
-    <p>Welcome to the homepage</p>
+    <section class="hero">
+        <h1>Hi, I'm {{ name }}</h1>
+        <p class="tagline">Computer Science, 2026 at Southern Illinois University Edwardsville</p>
+
+        <div class="buttons">
+            <a class="button secondary" href="{{ url_for('contact') }}">Conatct Me</a>
+        </div>
+    </section>
 {% endblock %}

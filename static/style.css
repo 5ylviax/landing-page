@@ -1,32 +1,335 @@
+/* ---------- Colors and sizes used everywhere ---------- */
+:root {
+  --bg: #f7f7f8;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #5b6470;
+  --border: #e3e5e8;
+  --nav-bg: #181818;
+  --nav-icon: #4d4d4e;
+  --nav-accent: #ffd700;
+  --accent: #2563eb;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
 }
 
-h2, p {
-  margin: 10px;
+a {
+  color: var(--accent);
 }
 
-ul {
-  list-style-type: none;
+h1, h2, h3 {
+  line-height: 1.2;
+}
+
+/* ---------- Horizontal nav bar ---------- */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background: var(--nav-bg);
+}
+
+.brand {
+  padding: 14px 0;
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease-out;
+}
+
+.brand:hover {
+  color: var(--nav-accent);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #333333;
 }
 
-ul li {
-  float: left;
-}
-
-ul li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
+.nav-links a {
+  position: relative;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;          /* wide enough for the longest word, "PORTFOLIO" */
+  height: 56px;
+  color: var(--nav-icon);
+  font-size: 22px;
   text-decoration: none;
 }
 
-ul li a:hover {
-  background-color: #111111;
+.nav-links a i {
+  transition: opacity 0.3s ease-out;
+}
+
+.nav-links .label {
+  position: absolute;      
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: 2px;
+  text-align: center;            /* two-word labels wrap onto two centered lines */
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+
+.nav-links a:hover,
+.nav-links a:focus-visible {
+  color: var(--nav-accent);
+}
+
+.nav-links a:hover i,
+.nav-links a:focus-visible i {
+  opacity: 0;
+}
+
+.nav-links a:hover .label,
+.nav-links a:focus-visible .label {
+  opacity: 1;
+}
+
+/* The page you're on gets a gold icon */
+.nav-links a.active {
+  color: var(--nav-accent);
+}
+
+
+@media (hover: none) {
+  .nav-links a {
+    flex-direction: column;
+    gap: 2px;
+    font-size: 18px;
+  }
+
+  .nav-links .label {
+    position: static;
+    opacity: 1;
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+}
+
+/* ---------- Page layout ---------- */
+.page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.section {
+  margin-top: 40px;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* ---------- Home: hero ---------- */
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: clamp(2rem, 5vw, 3rem);   /* grows with the screen, between 2rem and 3rem */
+}
+
+.tagline {
+  margin: 0 0 16px;
+  font-size: 1.25rem;
+  color: var(--muted);
+}
+
+/* ---------- Buttons ---------- */
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.button.secondary {
+  background: transparent;
+  color: var(--accent);
+}
+
+.button:hover {
+  opacity: 0.85;
+}
+
+/* ---------- Cards ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));   /* as many columns as fit */
+  gap: 16px;
+}
+
+.card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.card h3 {
+  margin: 0 0 6px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* ---------- Portfolio: project cards (styled after the Portfolio Website) ---------- */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+/* The card is a stack of layers: image (bottom), gold overlay, then the text */
+.project {
+  position: relative;
+  height: 320px;
+  overflow: hidden;              /* hides anything that sticks out of the card */
+  border-radius: var(--radius);
+  background: var(--nav-bg);
+}
+
+.project-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;             /* fills the card without stretching the image */
+}
+
+/* Shown when a project has no image yet */
+.project-image.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 80px;          /* keeps the icon above the text */
+  color: var(--nav-icon);
+  font-size: 48px;
+}
+
+/* Gold-to-black overlay, invisible until hover */
+.project::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, var(--nav-accent), #000000);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+/* Text sits at the bottom, above the overlay */
+.project-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 16px 20px;
+  color: #ffffff;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 1));
+  transition: background 0.3s ease-out;
+}
+
+.project-title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.project-description {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* The View button starts collapsed. When it opens, the text above it
+   slides up, because the content box is pinned to the bottom of the card. */
+.project-actions {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.project-btn {
+  display: inline-block;
+  margin: 20px 0 6px;
+  padding: 8px 22px;
+  border: 2px solid var(--nav-accent);
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.3s ease-out, background 0.3s ease-out;
+}
+
+.project-btn:hover,
+.project-btn:focus-visible {
+  transform: translateY(-3px);
+  background: var(--nav-accent);
+  color: var(--nav-bg);          /* dark text stays readable on gold */
+}
+
+/* Hover (or tabbing to the button): show the overlay and the button */
+.project:hover::after,
+.project:focus-within::after {
+  opacity: 0.85;
+}
+
+.project:hover .project-content,
+.project:focus-within .project-content {
+  background: transparent;
+}
+
+.project:hover .project-actions,
+.project:focus-within .project-actions {
+  max-height: 80px;
+  opacity: 1;
+}
+
+/* Phones and tablets can't hover, so always show the button */
+@media (hover: none) {
+  .project-actions {
+    max-height: none;
+    opacity: 1;
+  }
 }
