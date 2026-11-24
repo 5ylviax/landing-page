@@ -1,0 +1,9 @@
+services:
+  portfolio:
+    build: .
+    container_name: portfolio
+    ports:
+      - "127.0.0.1:8003:8000"
+    env_file:
+      - .env
+    restart: unless-stopped
