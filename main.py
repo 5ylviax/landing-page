@@ -16,11 +16,14 @@ PROJECTS = [
         "description": "C++, Qt",
         "image": "FrameWatch-desktop-application.png",
         "github_url": "https://github.com/5ylviax/framewatch",
+        # Zip attached to the "framewatchv1" release on GitHub
+        "download_url": "https://github.com/5ylviax/framewatch/releases/download/framewatchv1/Framewatch.zip",
+        "download_os": "Windows",
     },
     {
         "title": "Landing Page",
         "description": "Python, Flask, HTML, CSS",
-        "image": None,
+        "image": "landing-page.png",
         "url": "https://www.silviasaavedra.dev/",
         "github_url": "https://github.com/5ylviax/landing-page",
     },
@@ -36,7 +39,7 @@ PROJECTS = [
     {
         "title": "AI Powered Job Matching System",
         "description": "Python, Docker, OpenAI, RapidAI",
-        "image": None,
+        "image": "job-match-card.png",
         "url": None,
         "github_url": "https://github.com/5ylviax/AI-Powered-Job-Matching-System",
     },

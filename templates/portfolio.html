@@ -1,38 +1,47 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Portfolio</h1>
-    <div class="projects">
+<div class="portfolio-page">
+    <h1 class="page-title" bold><strong>Portfolio</strong></h1>
+    <div class="images-container">
         {% for project in projects %}
-            <article class="project">
+            <div class="image-box">
                 {% if project.image %}
-                    <img class="project-image"
+                    <img class="portfolio-image"
                          src="{{ url_for('static', filename='/image/' ~ project.image) }}"
                          alt="Screenshot of {{ project.title }}">
                 {% else %}
-                    <div class="project-image placeholder" aria-hidden="true">
+                    <div class="portfolio-image placeholder" aria-hidden="true">
                         <i class="fa-solid fa-code"></i>
                     </div>
                 {% endif %}
 
-                <div class="project-content">
-                    <h2 class="project-title">{{ project.title }}</h2>
-                    <p class="project-description">{{ project.description }}</p>
-                    {% if project.url or project.github_url %}
-                        <div class="project-actions">
-                            {% if project.url %}
-                                <a class="project-btn" href="{{ project.url }}" target="_blank" rel="noreferrer">View</a>
+                <div class="content">
+                    <p class="title">{{ project.title }}</p>
+                    <h4 class="description">{{ project.description }}</h4>
+                    {% if project.url %}
+                        <a class="btn" href="{{ project.url }}" target="_blank" rel="noreferrer">View</a>
+                    {% endif %}
+                    {% if project.download_url %}
+                        <a class="btn" href="{{ project.download_url }}"
+                           {% if project.download_os %}title="Download for {{ project.download_os }}" aria-label="Download for {{ project.download_os }}"{% endif %}>
+                            {% if project.download_os == "Windows" %}
+                                <i class="fa-brands fa-windows" aria-hidden="true"></i>
+                            {% else %}
+                                <i class="fa-solid fa-download" aria-hidden="true"></i>
                             {% endif %}
-                            {% if project.github_url %}
-                                <a class="project-btn" href="{{ project.github_url }}" target="_blank" rel="noreferrer">
-                                    <i class="fa-brands fa-github" aria-hidden="true"></i>
-                                    GitHub
-                                </a>
-                            {% endif %}
-                        </div>
+                            Download
+                        </a>
+                    {% endif %}
+                    {% if project.github_url %}
+                        <a class="btn" href="{{ project.github_url }}" target="_blank" rel="noreferrer">
+                            <i class="fa-brands fa-github" aria-hidden="true"></i>
+                            GitHub
+                        </a>
                     {% endif %}
                 </div>
-            </article>
+            </div>
         {% endfor %}
     </div>
+</div>
 {% endblock %}
