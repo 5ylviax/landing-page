@@ -36,9 +36,9 @@ PROJECTS = [
     {
         "title": "AI Powered Job Matching System",
         "description": "Python, Docker, OpenAI, RapidAI",
-        "image": "",
+        "image": None,
         "url": None,
-        "github_url": None,
+        "github_url": "https://github.com/5ylviax/AI-Powered-Job-Matching-System",
     },
     
     {
