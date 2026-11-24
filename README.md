@@ -3,16 +3,11 @@
 ## To run application
 
 ```bash
-flask --app hello run
+flask --app main run
 ```
 
 ## Debug Mode 
 ```bash 
-flask --app hello.py run --debug 
+flask --app main run --debug 
 ```
-
-
-## Tech Stack 
-
-
 
