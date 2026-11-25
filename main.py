@@ -48,8 +48,9 @@ PROJECTS = [
         "title": "Gilga",
         "description": "C#, Unity",
         "image": "gilga.jpg",
-        "url": "https://play.unity.com/en/games/d8d46218-d907-461d-8003-ad49bb4f85f1/gilga",
+        "url": None,
         "github_url": "https://github.com/5ylviax/Gilga",
+        "play_url": "https://play.unity.com/en/games/d8d46218-d907-461d-8003-ad49bb4f85f1/gilga",
     },
     
     

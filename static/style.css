@@ -276,10 +276,9 @@ h1, h2, h3 {
   font-size: 48px;
 }
 
-/* Text sits at the bottom; bottom: -70px pushes the buttons out of view until hover */
 .portfolio-page .content {
   position: absolute;
-  bottom: -70px;
+  bottom: 0;
   z-index: 3;
   width: 100%;
   padding: 10px 20px;
@@ -328,6 +327,17 @@ h1, h2, h3 {
   background: #ffd700;
 }
 
+.portfolio-page .project-links {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.portfolio-page .project-links-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
 /* Gold-to-black overlay, invisible until hover */
 .portfolio-page .image-box::after {
   content: "";
@@ -347,8 +357,12 @@ h1, h2, h3 {
 
 .portfolio-page .image-box:hover .content,
 .portfolio-page .image-box:focus-within .content {
-  bottom: 0;
   background: transparent;
+}
+
+.portfolio-page .image-box:hover .project-links,
+.portfolio-page .image-box:focus-within .project-links {
+  grid-template-rows: 1fr;
 }
 
 @media screen and (max-width: 1000px) {
@@ -375,13 +389,18 @@ h1, h2, h3 {
   .portfolio-page .image-box {
     flex-basis: 100%;
     max-width: 100%;
-    height: 200px;
+    height: auto;
+    aspect-ratio: 4 / 3;
   }
 
   /* Buttons always visible (there's no hover on a phone) */
-  .portfolio-page .content {
-    bottom: 0;
+  .portfolio-page .project-links {
+    grid-template-rows: 1fr;
     transition: none;
+  }
+
+  .portfolio-page .btn {
+    margin-top: 12px;
   }
 }
 
@@ -473,9 +492,9 @@ h1, h2, h3 {
     letter-spacing: 1px;
   }
 
-  /* No hover on touch screens, so slide the project buttons into view */
-  .portfolio-page .content {
-    bottom: 0;
+  /* No hover on touch screens, so show the project buttons */
+  .portfolio-page .project-links {
+    grid-template-rows: 1fr;
   }
 
   .gallery-item figcaption {

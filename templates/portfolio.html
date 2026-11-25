@@ -19,26 +19,36 @@
                 <div class="content">
                     <p class="title">{{ project.title }}</p>
                     <h4 class="description">{{ project.description }}</h4>
-                    {% if project.url %}
-                        <a class="btn" href="{{ project.url }}" target="_blank" rel="noreferrer">View</a>
-                    {% endif %}
-                    {% if project.download_url %}
-                        <a class="btn" href="{{ project.download_url }}"
-                           {% if project.download_os %}title="Download for {{ project.download_os }}" aria-label="Download for {{ project.download_os }}"{% endif %}>
-                            {% if project.download_os == "Windows" %}
-                                <i class="fa-brands fa-windows" aria-hidden="true"></i>
-                            {% else %}
-                                <i class="fa-solid fa-download" aria-hidden="true"></i>
+                    <div class="project-links">
+                        <div class="project-links-inner">
+                            {% if project.url %}
+                                <a class="btn" href="{{ project.url }}" target="_blank" rel="noreferrer">View</a>
                             {% endif %}
-                            Download
-                        </a>
-                    {% endif %}
-                    {% if project.github_url %}
-                        <a class="btn" href="{{ project.github_url }}" target="_blank" rel="noreferrer">
-                            <i class="fa-brands fa-github" aria-hidden="true"></i>
-                            GitHub
-                        </a>
-                    {% endif %}
+                            {% if project.download_url %}
+                                <a class="btn" href="{{ project.download_url }}"
+                                   {% if project.download_os %}title="Download for {{ project.download_os }}" aria-label="Download for {{ project.download_os }}"{% endif %}>
+                                    {% if project.download_os == "Windows" %}
+                                        <i class="fa-brands fa-windows" aria-hidden="true"></i>
+                                    {% else %}
+                                        <i class="fa-solid fa-download" aria-hidden="true"></i>
+                                    {% endif %}
+                                    Download
+                                </a>
+                            {% endif %}
+                            {% if project.play_url %}
+                                <a class="btn" href="{{ project.play_url }}" target="_blank" rel="noreferrer">
+                                    <i class="fa-solid fa-gamepad" aria-hidden="true"></i>
+                                    Play
+                                </a>
+                            {% endif %}
+                            {% if project.github_url %}
+                                <a class="btn" href="{{ project.github_url }}" target="_blank" rel="noreferrer">
+                                    <i class="fa-brands fa-github" aria-hidden="true"></i>
+                                    GitHub
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
         {% endfor %}
