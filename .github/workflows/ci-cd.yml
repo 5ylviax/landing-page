@@ -54,3 +54,6 @@ jobs:
 
       - name: Publish Docker image
         run: docker push "$IMAGE"
+  deploy:
+    needs: build-test-publish
+    runs-on: ubuntu-latest
