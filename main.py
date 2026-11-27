@@ -23,10 +23,19 @@ def sitemap():
     )
 
 
+@app.route("/robots.txt")
+def robots():
+    return send_from_directory(
+        app.static_folder,
+        "robots.txt",
+        mimetype="text/plain"
+    )
+
+
 # Website Routes
 @app.route("/")
 def index():
-    return render_template("home.html", name="Silvia")
+    return render_template("home.html", name="Silvia Saavedra")
 
 
 @app.route("/about")

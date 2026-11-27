@@ -141,6 +141,22 @@ h1, h2, h3 {
   color: var(--muted);
 }
 
+.hero .tagline span {
+  display: block;
+}
+
+.hero .degree {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.hero .school {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
 /* ---------- Buttons ---------- */
 .buttons {
   display: flex;

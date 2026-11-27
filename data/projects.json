@@ -1,7 +1,7 @@
 [
     {
         "title": "Jacob Grub's",
-        "technologies": ["Go", "SQLite", "HTML", "CSS"],
+        "technologies": ["GO", "SQLite", "HTML", "CSS"],
         "image": "jacobgrubs.png",
         "url": "https://jacobsgrub.duckdns.org/",
         "github_url": "https://github.com/m0jik/recipe_website"
