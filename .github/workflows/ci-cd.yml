@@ -1,0 +1,40 @@
+name: Portfolio CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: portfolio-publish
+  cancel-in-progress: false
+
+jobs:
+  build-test-publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t ghcr.io/5ylviax/portfolio:latest .
+
+      - name: Test Docker container
+        run: |
+          docker run -d --name portfolio-test -p 127.0.0.1:4002:8000 ghcr.io/5ylviax/portfolio:latest
+          curl --fail --retry 10 --retry-connrefused --retry-delay 2 http://127.0.0.1:4002/
+
+      - name: Login to GitHub Container Registry
+        env:
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "$GHCR_TOKEN" | docker login ghcr.io -u "$GITHUB_ACTOR" --password-stdin
+
+      - name: Push Docker image
+        run: docker push ghcr.io/5ylviax/portfolio:latest
