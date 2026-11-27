@@ -1,5 +1,6 @@
 services:
   portfolio:
+    image: ghcr.io/5ylviax/portfolio:latest
     build: .
     container_name: portfolio
     ports:
