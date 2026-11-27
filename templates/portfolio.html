@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% block title %}Software Engineering Projects | Silvia Saavedra{% endblock %}
+{% block description %}Software projects built with Go, Python, Flask, C++, Qt, C#, Unity, and Docker, with live demos, downloads, and source code on GitHub.{% endblock %}
+
 {% block content %}
 <div class="portfolio-page">
     <h1 class="page-title" bold><strong>Portfolio</strong></h1>
@@ -18,7 +21,7 @@
 
                 <div class="content">
                     <p class="title">{{ project.title }}</p>
-                    <h4 class="description">{{ project.description }}</h4>
+                    <h4 class="technology">{{ project.technologies | join(", ") }}</h4>
                     <div class="project-links">
                         <div class="project-links-inner">
                             {% if project.url %}

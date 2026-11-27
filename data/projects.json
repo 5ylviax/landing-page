@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Jacob Grub's",
+        "technologies": ["Go", "SQLite", "HTML", "CSS"],
+        "image": "jacobgrubs.png",
+        "url": "https://jacobsgrub.duckdns.org/",
+        "github_url": "https://github.com/m0jik/recipe_website"
+    },
+
+    {
+        "title": "Framewatch",
+        "technologies": ["C++", "Qt"],
+        "image": "FrameWatch-desktop-application.png",
+        "github_url": "https://github.com/5ylviax/framewatch",
+        "download_url": "https://github.com/5ylviax/framewatch/releases/download/framewatchv1/Framewatch.zip",
+        "download_os": "Windows"
+    },
+
+    {
+        "title": "Landing Page",
+        "technologies": ["Python", "Flask", "HTML", "CSS"],
+        "image": "landing-page.png",
+        "url": "https://www.silviasaavedra.dev/",
+        "github_url": "https://github.com/5ylviax/landing-page"
+    },
+
+    {
+        "title": "AI Powered Job Matching System",
+        "technologies": ["Python", "Docker", "OpenAI", "RapidAPI"],
+        "image": "job-match-card.png",
+        "url": null,
+        "github_url": "https://github.com/5ylviax/AI-Powered-Job-Matching-System"
+    },
+
+    {
+        "title": "Gilga",
+        "description": "C#, Unity",
+        "technologies": ["C#","Unity"],
+        "image": "gilga.jpg",
+        "url": null,
+        "github_url": "https://github.com/5ylviax/Gilga",
+        "play_url": "https://play.unity.com/en/games/d8d46218-d907-461d-8003-ad49bb4f85f1/gilga"
+    }
+]
