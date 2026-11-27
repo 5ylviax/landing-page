@@ -12,6 +12,7 @@ with open(BASE_DIR / "data" / "gallery.json", encoding="utf-8") as file:
     
 app = Flask(__name__)
 
+# flask --app main run --debug
 
 # SEO
 @app.route("/sitemap.xml")
